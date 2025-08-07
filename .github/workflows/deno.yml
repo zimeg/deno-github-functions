@@ -28,7 +28,7 @@ jobs:
       - name: Install CLI
         run: |
           irm https://downloads.slack-edge.com/slack-cli/install-windows.ps1 -outfile 'install-windows.ps1'
-          slack version
+          slack.exe version
 
       - name: Deploy
         run: |

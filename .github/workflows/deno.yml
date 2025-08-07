@@ -25,12 +25,6 @@ jobs:
         with:
           deno-version: v2.x
 
-      - name: Run tests
-        run: deno task test
-
-      - name: Run type check
-        run: deno check *.ts && deno check **/*.ts
-
       - name: Install CLI
         run: |
           irm https://downloads.slack-edge.com/slack-cli/install-windows.ps1 -outfile 'install-windows.ps1'

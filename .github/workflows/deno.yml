@@ -10,8 +10,11 @@ on:
 
 jobs:
   deno:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     timeout-minutes: 5
+    defaults:
+      run:
+        shell: powershell
 
     steps:
       - name: Setup repo
@@ -33,3 +36,12 @@ jobs:
 
       - name: Run type check
         run: deno check *.ts && deno check **/*.ts
+
+      - name: Install CLI
+        run: |
+          irm https://downloads.slack-edge.com/slack-cli/install-windows.ps1 -outfile 'install-windows.ps1'
+          slack version
+
+      - name: Deploy
+        run: |
+          slack deploy --app A0123456789

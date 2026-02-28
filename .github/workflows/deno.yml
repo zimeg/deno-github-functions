@@ -33,3 +33,5 @@ jobs:
         with:
           command: "deploy --app ${{ vars.SLACK_APP_ID }} --hide-triggers --force"
           token: ${{ secrets.SLACK_SERVICE_TOKEN }}
+        env:
+          GITHUB_CLIENT_ID: ${{ vars.SLACK_GITHUB_CLIENT_ID }}

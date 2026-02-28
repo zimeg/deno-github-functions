@@ -12,9 +12,6 @@ jobs:
   deno:
     runs-on: windows-latest
     timeout-minutes: 5
-    defaults:
-      run:
-        shell: pwsh
 
     steps:
       - name: Setup repo
@@ -25,11 +22,14 @@ jobs:
         with:
           deno-version: v2.x
 
-      - name: Install CLI
-        run: |
-          irm https://downloads.slack-edge.com/slack-cli/install-windows.ps1 | iex
-          slack version
+      - name: Show version
+        id: version
+        uses: slackapi/slack-github-action/cli@v2
+        with:
+          command: "version"
 
       - name: Deploy
-        run: |
-          slack deploy --app A0123456789
+        uses: slackapi/slack-github-action/cli@v2
+        with:
+          command: "deploy --app A0123456789 --hide-triggers --force"
+          token: ${{ secrets.SLACK_SERVICE_TOKEN }}

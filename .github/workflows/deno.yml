@@ -24,12 +24,12 @@ jobs:
 
       - name: Show version
         id: version
-        uses: slackapi/slack-github-action/cli@v2
+        uses: zimeg/slack-github-action/cli@v2.2.0-rc.1
         with:
           command: "version"
 
       - name: Deploy
-        uses: slackapi/slack-github-action/cli@v2
+        uses: zimeg/slack-github-action/cli@v2.2.0-rc.1
         with:
-          command: "deploy --app A0123456789 --hide-triggers --force"
+          command: "deploy --app ${{ vars.SLACK_APP_ID }} --force"
           token: ${{ secrets.SLACK_SERVICE_TOKEN }}

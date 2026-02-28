@@ -31,5 +31,5 @@ jobs:
       - name: Deploy
         uses: zimeg/slack-github-action/cli@v2.2.0-rc.1
         with:
-          command: "deploy --app ${{ vars.SLACK_APP_ID }} --force"
+          command: "deploy --app ${{ vars.SLACK_APP_ID }} --hide-triggers --force"
           token: ${{ secrets.SLACK_SERVICE_TOKEN }}
